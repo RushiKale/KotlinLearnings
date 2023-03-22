@@ -12,10 +12,7 @@ fun main() {
     var choice : Int = 0
 
     while(choice != 3){
-        printInstructions()
-        when(choice){
-            1 ->
-        }
+
     }
 
 }
