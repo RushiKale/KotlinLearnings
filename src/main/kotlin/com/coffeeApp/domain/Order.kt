@@ -1,8 +1,8 @@
 package com.coffeeApp.domain
 
-data class Order(val customerName : String) {
+class Order(val customerName : String) {
     val orderID = counter++
-    val orderItems : Map<Coffee,Int> = mutableMapOf()
+    var orderItems : MutableMap<Coffee,Int> = mutableMapOf()
 
     companion object {
         var counter = 100
