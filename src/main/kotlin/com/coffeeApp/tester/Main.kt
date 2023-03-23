@@ -13,20 +13,31 @@ fun main() {
     val util : Util = Util()
 
     println("Enter Your Name : ")
-    val name = sc.next()
+    val name = sc.nextLine()
     println("Welcome $name")
     val order : Order = Order(name)
-    while(choice != 3){
+    while(choice != 6){
         printer.printInstructions()
         choice = sc.nextInt()
         when(choice){
-            1 -> {
+            1,2 -> {
                 println("Enter Coffee ID : ")
                 val coffeeID = sc.nextInt()
-                util.orderNewCoffee(menu,order,coffeeID)
+                println("How Many coffee you want : ")
+                val quantity : Int = sc.nextInt()
+                util.orderNewCoffee(menu,order,coffeeID,quantity)
             }
-            2 ->  printer.printOrderDetails(order)
-
+            3 -> {
+                printer.printOrderDetails(order)
+                println("Enter Coffee ID you want to remove from Order : ")
+                val quantity : Int = sc.nextInt()
+                util.cancelOrder(menu,order,quantity)
+            }
+            4 ->  printer.printOrderDetails(order)
+            5 ->  {
+                printer.printInvoice(order)
+                choice = 6
+            }
             else -> println("Try Again")
 
         }

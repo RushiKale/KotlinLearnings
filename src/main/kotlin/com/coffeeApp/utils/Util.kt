@@ -10,19 +10,24 @@ class Util {
 
 
 
-    fun orderNewCoffee(menu: Menu, order: Order,coffeeID : Int) {
-        println("Enter Coffee Id You want to order : (1 to ${menu.list.size-1}")
-        if(coffeeID < 1 || coffeeID >= menu.list.size ){
+    fun orderNewCoffee(menu: Menu, order: Order,coffeeID : Int,quantity : Int) {
+        if(coffeeID < 1 || coffeeID > menu.list.size ){
             println("Invalid Coffee ID... Can not proceed...")
             return
         }
+        if(quantity < 1){
+            println("Invalid Quantity... Unable to proceed...")
+            return
+        }
         val coffee = menu.list.get(coffeeID)
-        if (coffee != null) order.addCoffee(coffee) else return
-
-
-
-
+        if (coffee != null) order.addCoffee(coffee,quantity)
     }
+
+    fun cancelOrder(menu: Menu,order: Order,coffeeID: Int){
+        val coffee = menu.list.get(coffeeID)
+        if (coffee != null) order.removeCoffee(coffee)
+    }
+
 
 
 
