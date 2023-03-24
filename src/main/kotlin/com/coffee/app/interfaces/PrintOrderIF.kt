@@ -1,6 +1,6 @@
-package com.coffeeApp.interfaces
+package com.coffee.app.interfaces
 
-import com.coffeeApp.domain.Order
+import com.coffee.app.domain.Order
 
 interface PrintOrderIF {
     fun printOrderDetails(order : Order)

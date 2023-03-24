@@ -1,4 +1,4 @@
-package com.coffeeApp.domain
+package com.coffee.app.domain
 
 data class Coffee(val name : String, val size : Size, val price : Double) {
     val id : Int = counter++

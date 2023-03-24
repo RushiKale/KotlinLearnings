@@ -1,4 +1,4 @@
-package com.coffeeApp.domain
+package com.coffee.app.domain
 
 data class Order(val customerName : String) {
     val orderID = counter++
@@ -8,7 +8,7 @@ data class Order(val customerName : String) {
         var counter = 100
     }
 
-    fun addCoffee(coffee: Coffee,quantity : Int){
+    fun addCoffee(coffee: Coffee, quantity : Int){
         if(quantity < 1){
             println("Quantity can not be zero or minus")
             return

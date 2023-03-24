@@ -1,14 +1,14 @@
-package com.coffeeApp.utils
+package com.coffee.app.utils
 
-import com.coffeeApp.domain.Menu
-import com.coffeeApp.domain.Order
-import com.coffeeApp.interfaces.PrintInstructionsIF
-import com.coffeeApp.interfaces.PrintInvoiceIF
-import com.coffeeApp.interfaces.PrintMenuIF
-import com.coffeeApp.interfaces.PrintOrderIF
+import com.coffee.app.domain.Menu
+import com.coffee.app.domain.Order
+import com.coffee.app.interfaces.PrintInstructionsIF
+import com.coffee.app.interfaces.PrintInvoiceIF
+import com.coffee.app.interfaces.PrintMenuIF
+import com.coffee.app.interfaces.PrintOrderIF
 import java.util.Formatter
 
-class Print() : PrintMenuIF,PrintInstructionsIF,PrintOrderIF,PrintInvoiceIF {
+class Print() : PrintMenuIF, PrintInstructionsIF, PrintOrderIF, PrintInvoiceIF {
 
     override fun printMenu(menu: Menu) {
         val fmt : Formatter = Formatter()

@@ -1,7 +1,9 @@
-package com.coffeeApp.tester
+package com.coffee.app.tester
 
-import com.coffeeApp.domain.*
-import com.coffeeApp.utils.*
+import com.coffee.app.domain.Menu
+import com.coffee.app.domain.Order
+import com.coffee.app.utils.Print
+import com.coffee.app.utils.Util
 import java.util.*
 fun main() {
     val menu: Menu = Menu()
