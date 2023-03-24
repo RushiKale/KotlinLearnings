@@ -6,12 +6,21 @@ import com.coffeeApp.interfaces.PrintInstructionsIF
 import com.coffeeApp.interfaces.PrintInvoiceIF
 import com.coffeeApp.interfaces.PrintMenuIF
 import com.coffeeApp.interfaces.PrintOrderIF
+import java.util.Formatter
 
 class Print() : PrintMenuIF,PrintInstructionsIF,PrintOrderIF,PrintInvoiceIF {
 
     override fun printMenu(menu: Menu) {
-        println("Your Menu is : ")
-        menu.list.forEach{ println("${it.key}  ${it.value}" )}
+        val fmt : Formatter = Formatter()
+        fmt.format("%1s\n","-------------------------------------")
+        fmt.format("%5s %13s %7s %7s\n", "ID", "NAME", "SIZE", "PRICE")
+        fmt.format("%1s\n","-------------------------------------")
+
+        menu.list.forEach{
+            fmt.format("%5s %13s %7s %7s\n",it.value.id,it.value.name,it.value.size,it.value.price)
+        }
+        println(fmt)
+
     }
 
     override fun printInstructions() {
@@ -25,13 +34,25 @@ class Print() : PrintMenuIF,PrintInstructionsIF,PrintOrderIF,PrintInvoiceIF {
     }
 
     override fun printOrderDetails(order: Order) {
-        println("----------------------------------------------------------------")
-        println("---------------------- ORDER DETAILS ---------------------------")
-        println("               CUSTOMER NAME : ${order.customerName.uppercase()}")
-        println("                ORDER NUMBER : ${order.orderID} ")
-        println("")
-        order.orderItems.forEach{ println("${it.key}\t Quantity : ${it.value}") }
-        println("\n----------------------------------------------------------------")
+        val fmt : Formatter = Formatter()
+
+        fmt.format("%1s\n","-------------------------------------")
+        fmt.format("%26s\n","ORDER DETAILS")
+        fmt.format("%18s %2s %5s\n","CUSTOMER NAME",":",order.customerName.uppercase())
+        fmt.format("%18s %2s %5s\n","ORDER NUMBER",":",order.orderID)
+        fmt.format("%1s\n","-------------------------------------")
+        fmt.format("%5s %13s %7s %7s\n", "ID", "NAME", "SIZE", "PRICE")
+        fmt.format("%1s\n","-------------------------------------")
+
+//        println("----------------------------------------------------------------")
+//        println("---------------------- ORDER DETAILS ---------------------------")
+//        println("               CUSTOMER NAME : ${order.customerName.uppercase()}")
+//        println("                ORDER NUMBER : ${order.orderID} ")
+//        println("")
+//        order.orderItems.forEach{ println("${it.key}\t Quantity : ${it.value}") }
+        order.orderItems.forEach{ fmt.format("%5s %13s %7s %7s\n",it.key.id,it.key.name,it.key.size,it.key.price) }
+
+        println(fmt)
     }
 
 
@@ -39,11 +60,13 @@ class Print() : PrintMenuIF,PrintInstructionsIF,PrintOrderIF,PrintInvoiceIF {
         val amountList = order.orderItems.map { (coffee, quantity) -> coffee.price * quantity }
         var index = 0
         val totalAmount = amountList.sum()
+        val fmt : Formatter = Formatter()
         printOrderDetails(order)
-
-        println("                TOTAL AMOUNT : $totalAmount             ")
-        println("              REWARDS EARNED : ${totalAmount / 150 }             ")
-        println("\n----------------------------------------------------------------")
+        fmt.format("%1s\n","-------------------------------------")
+        fmt.format("%18s %2s %5s\n","TOTAL AMOUNT",":",totalAmount)
+        fmt.format("%18s %2s %5s\n","REWARDS EARNED",":",totalAmount / 150)
+        fmt.format("%1s\n","-------------------------------------")
+        println(fmt)
 
     }
 }

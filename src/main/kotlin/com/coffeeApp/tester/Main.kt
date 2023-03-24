@@ -3,7 +3,6 @@ package com.coffeeApp.tester
 import com.coffeeApp.domain.*
 import com.coffeeApp.utils.*
 import java.util.*
-
 fun main() {
     val menu: Menu = Menu()
     val printer : Print = Print()
@@ -42,14 +41,4 @@ fun main() {
 
         }
     }
-
-
-    /*
-    *
-    * Need to ask how many Quantity you want ?  -> then direct update
-    * Cost calculation at the time of bill printing
-    *
-    *
-    * */
-
 }
