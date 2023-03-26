@@ -1,8 +1,12 @@
 package com.coffee.app.domain
 
-data class Order(val customerName : String) {
+import com.coffee.app.interfaces.CoffeeList
+import com.coffee.app.utils.Print
+import java.util.*
+
+data class Order(val customerName : String) : CoffeeList{
     val orderID = counter++
-    val orderItems : MutableMap<Coffee,Int> = mutableMapOf()
+    val mapOfCoffeeToQuantity : MutableMap<Coffee,Int> = mutableMapOf()
 
     companion object {
         var counter = 100
@@ -13,27 +17,23 @@ data class Order(val customerName : String) {
             println("Quantity can not be zero or minus")
             return
         }
-        orderItems[coffee] = quantity
-        /*
-         if(orderItems.containsKey(coffee)){
-             orderItems[coffee] = quantity
-         }
-         else{
-             orderItems[coffee] = 1
-         }
-         */
+        mapOfCoffeeToQuantity[coffee] = quantity
     }
 
     fun removeCoffee(coffee: Coffee){
-        if(orderItems.contains(coffee)) orderItems.remove(coffee) else println("${coffee.name} is not present in order...")
-        /*val quantity = orderItems[coffee]?:0
-         if(quantity == 1){
-            orderItems.remove(coffee)
-         }else if(quantity > 1){
-             orderItems[coffee] = quantity - 1
-         }else{
-             println("Quantity can not be zero or minus")
-         }*/
+        if(mapOfCoffeeToQuantity.contains(coffee)) mapOfCoffeeToQuantity.remove(coffee) else println("${coffee.name} is not present in order...")
+    }
+
+    override fun printList()  {
+        val fmt = Formatter()
+        fmt.format("%26s\n","ORDER DETAILS")
+            .format("%25s %2s %5s\n","CUSTOMER NAME",":",this.customerName.uppercase())
+            .format("%25s %2s %5s\n","ORDER NUMBER",":",this.orderID)
+            .format("%1s\n","----------------------------------------------------")
+            .format("%5s %13s %7s %7s %10s\n", "ID", "NAME", "SIZE", "PRICE","QUANTITY")
+            .format("%1s\n","----------------------------------------------------")
+        mapOfCoffeeToQuantity.forEach{ (coffee,quantity) -> fmt.format("%5s %13s %7s %7s %10s\n",coffee.id,coffee.name,coffee.size,coffee.price,quantity) }
+        print(fmt)
     }
 
 

@@ -1,5 +1,6 @@
 package com.coffee.app.tester
 
+import com.coffee.app.domain.Invoice
 import com.coffee.app.domain.Menu
 import com.coffee.app.domain.Order
 import com.coffee.app.utils.Print
@@ -8,11 +9,12 @@ import java.util.*
 fun main() {
     val menu: Menu = Menu()
     val printer : Print = Print()
-    printer.printMenu(menu)
+
     val sc : Scanner = Scanner(System.`in`)
     var choice : Int = 0
     val util : Util = Util()
 
+    printer.print(menu)
     println("Enter Your Name : ")
     val name = sc.nextLine()
     println("Welcome $name")
@@ -29,14 +31,14 @@ fun main() {
                 util.orderNewCoffee(menu,order,coffeeID,quantity)
             }
             3 -> {
-                printer.printOrderDetails(order)
+                printer.print(order)
                 println("Enter Coffee ID you want to remove from Order : ")
                 val quantity : Int = sc.nextInt()
                 util.cancelOrder(menu,order,quantity)
             }
-            4 ->  printer.printOrderDetails(order)
+            4 ->  printer.print(order)
             5 ->  {
-                printer.printInvoice(order)
+                printer.print(Invoice(order))
                 choice = 6
             }
             else -> println("Try Again")
