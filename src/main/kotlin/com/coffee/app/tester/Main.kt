@@ -47,20 +47,3 @@ fun main() {
         }
     }
 }
-
-fun main1() {
-    for(i in 0..9){print("\u001b[38;5;${i}m■$i   ")}
-    for(i in 10..19){print("\u001b[38;5;${i}m■$i  ")};println("")
-    for(i in 20..39){print("\u001b[38;5;${i}m■$i  ")};println("")
-    for(i in 40..59){print("\u001b[38;5;${i}m■$i  ")};println("")
-    for(i in 60..79){print("\u001b[38;5;${i}m■$i  ")};println("")
-    for(i in 80..99){print("\u001b[38;5;${i}m■$i  ")};println("")
-    for(i in 100..119){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 120..139){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 140..159){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 160..179){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 180..199){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 200..219){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 220..239){print("\u001b[38;5;${i}m■$i ")};println("")
-    for(i in 240..255){print("\u001b[38;5;${i}m■$i ")}
-}

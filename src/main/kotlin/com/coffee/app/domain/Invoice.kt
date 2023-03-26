@@ -6,6 +6,10 @@ import java.util.*
 
 class Invoice(private val order: Order) : CoffeeList {
     override fun printList() {
+        if(order.mapOfCoffeeToQuantity.isEmpty()){
+            println("Order is Empty")
+            return
+        }
         val obj : CoffeeList = order
         val fmt = Formatter()
         obj.printList()
