@@ -21,7 +21,11 @@ data class Order(val customerName : String) : CoffeeList{
     }
 
     fun removeCoffee(coffee: Coffee){
-        if(mapOfCoffeeToQuantity.contains(coffee)) mapOfCoffeeToQuantity.remove(coffee) else println("${Color.GREEN.value} ${coffee.name} is not present in order...${Color.RESET.value}")
+        if(mapOfCoffeeToQuantity.contains(coffee)) {
+            mapOfCoffeeToQuantity.remove(coffee)
+            println("${Color.GREEN.value}${coffee.name} with ${coffee.id} is deleted...${Color.RESET.value}")
+        }
+        else println("${Color.GREEN.value} ${coffee.name} is not present in order...${Color.RESET.value}")
     }
 
     override fun printList()  {
