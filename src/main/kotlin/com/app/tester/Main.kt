@@ -1,6 +1,5 @@
 package com.app.tester
 
-import com.app.domain.AccountType
 import com.app.utils.Util
 import java.util.*
 
@@ -9,7 +8,7 @@ fun main() {
     var run : Boolean = true
     var sc : Scanner = Scanner(System.`in`)
     var ch : Int = 0
-    while(run){
+    while(ch != 4){
         println("1. Register new User")
         println("2. Login as User")
         println("3. Login as Admin")
@@ -19,13 +18,8 @@ fun main() {
             1 -> Util.register()
             2 -> Util.login()
             3 -> Util.admin()
-            4 -> {
-                run = false
-                println("Thank You..")
-
-            }
+            4 -> println("Thank You..")
             else -> println("Invalid Input..")
-
         }
     }
 }
