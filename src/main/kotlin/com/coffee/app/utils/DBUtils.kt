@@ -17,9 +17,10 @@ object DBUtils {
             Coffee("Espresso", Size.FULL,300.0),
             Coffee("Late", Size.HALF,150.0)
         )
+
     }
 
-    fun getCoffeeById(id : Int) : Coffee?{
+    fun getCoffeeById(id : Int) : Coffee? {
         return Menu.coffeeList.find { it.id == id }
     }
 }
